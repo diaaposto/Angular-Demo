@@ -1,0 +1,14 @@
+<form [formGroup]="form">
+  <input formControlName="name" type="text" placeholder="Enter name.."/>
+  <button [disabled]="!form.valid" type="submit" (click)="onSubmit()">Submit</button>
+</form>
+<ul [ngSwitch]="state.loading">
+  <ng-container *ngSwitchCase="true">Loading...</ng-container>
+  <ng-container *ngSwitchCase="false">
+    <li
+      (click)="onClick(user)"
+      *ngFor="let user of state.users">
+      {{user.name}}
+    </li>
+  </ng-container>
+</ul>
